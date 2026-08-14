@@ -300,32 +300,19 @@
     <section class="section" id="pages">
       <h2 class="section-title glitch" data-text="// PAGES MANAGED">// PAGES MANAGED</h2>
       <div class="pages-grid">
-        <!-- == PASTE REAL PAGE URL in the href + drop a logo PNG in assets/img/ named like the file below == -->
-        <a class="page-card" href="#" target="_blank" rel="noopener">
-          <img src="assets/img/placeholder-logo.svg" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
-          <span class="page-name">Brand Account 01</span>
-          <span class="page-type">Facebook / Instagram</span>
+        <!-- == PASTE REAL PAGE URL in the href. Logo goes in assets/img/<name>-logo.png ==
+             If the logo file is missing, JS swaps in a styled initials badge as fallback. -->
+        <a class="page-card" href="https://www.facebook.com/classictech" target="_blank" rel="noopener">
+          <img src="assets/img/classictech-logo.png" alt="ClassicTech Internet logo" class="page-logo" loading="lazy" data-initials="CT" onerror="window.logoFallback(this)" />
+          <span class="page-name">ClassicTech Internet</span>
+          <span class="page-type">Facebook Page</span>
           <span class="page-go">→</span>
         </a>
 
-        <a class="page-card" href="#" target="_blank" rel="noopener">
-          <img src="assets/img/placeholder-logo.svg" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
-          <span class="page-name">Brand Account 02</span>
-          <span class="page-type">Facebook / Instagram</span>
-          <span class="page-go">→</span>
-        </a>
-
-        <a class="page-card" href="#" target="_blank" rel="noopener">
-          <img src="assets/img/placeholder-logo.svg" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
-          <span class="page-name">Brand Account 03</span>
-          <span class="page-type">Facebook / Instagram</span>
-          <span class="page-go">→</span>
-        </a>
-
-        <a class="page-card" href="#" target="_blank" rel="noopener">
-          <img src="assets/img/placeholder-logo.svg" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
-          <span class="page-name">Brand Account 04</span>
-          <span class="page-type">LinkedIn</span>
+        <a class="page-card" href="https://www.facebook.com/EnlightenEducation" target="_blank" rel="noopener">
+          <img src="assets/img/enlighten-logo.png" alt="Enlighten Education logo" class="page-logo" loading="lazy" data-initials="EE" onerror="window.logoFallback(this)" />
+          <span class="page-name">Enlighten Education</span>
+          <span class="page-type">Facebook Page</span>
           <span class="page-go">→</span>
         </a>
       </div>

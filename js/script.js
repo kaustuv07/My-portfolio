@@ -20,7 +20,7 @@
     // then paste your form ID below, e.g. "https://formspree.io/f/abcxyz".
     // Option B (fallback, no backend): set to null — the form will open the
     // visitor's email app with the message pre-filled instead.
-    FORM_ENDPOINT: null,
+    FORM_ENDPOINT: 'https://formspree.io/f/xppalkqa',
 
     // == PASTE YOUR REAL PAST-WORKS URL HERE ==
     PAST_WORKS_URL: 'https://tinyurl.com/PastWork7777',
@@ -394,6 +394,23 @@
       success();
     });
   }
+
+  /* ----------------------------------------------------------
+     11. PAGE LOGO FALLBACK — replaces a missing logo image
+         with a styled initials badge (called from onerror)
+     ---------------------------------------------------------- */
+  window.logoFallback = function (img) {
+    if (img.dataset.fallbackApplied) return; // only swap once
+    img.dataset.fallbackApplied = '1';
+
+    const initials = img.dataset.initials || 'BR';
+    const badge = document.createElement('span');
+    badge.className = 'page-logo page-logo-fallback';
+    badge.textContent = initials;
+    badge.setAttribute('aria-label', img.alt || 'Brand logo');
+
+    img.replaceWith(badge);
+  };
 
   /* ----------------------------------------------------------
      BOOT
