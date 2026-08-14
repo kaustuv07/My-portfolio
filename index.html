@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kaustuv Baral — Digital Marketing Executive. Data-driven campaigns, social media, paid ads, and content strategy." />
+  <title>Kaustuv Baral // Digital Marketing Executive</title>
+
+  <!-- Fonts: Orbitron (headings/techno), Rajdhani (body), Share Tech Mono (terminal) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       SCANLINE + NOISE OVERLAYS (cyberpunk CRT effect)
+       ============================================================ -->
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div id="cursor-trail" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVIGATION (sticky / collapsible neon bar)
+       ============================================================ -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav-logo" aria-label="Back to top">
+      <span class="nav-logo-mark">&gt;_</span> kaustuv<span class="nav-logo-cursor">▮</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="#about" data-section="about">// about</a>
+      <a href="#skills" data-section="skills">// skills</a>
+      <a href="#experience" data-section="experience">// experience</a>
+      <a href="#education" data-section="education">// education</a>
+      <a href="#works" data-section="works">// past works</a>
+      <a href="#pages" data-section="pages">// pages</a>
+      <a href="#contact" data-section="contact">// contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         1. HERO — glitch name, typed tagline, quick actions
+         ============================================================ -->
+    <section class="hero" id="hero">
+      <div class="hero-terminal" aria-hidden="true">
+        <div class="term-bar">
+          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+          <span class="term-title">kaustuv@night-city: ~/portfolio</span>
+        </div>
+        <div class="term-body">
+          <p><span class="term-prompt">$</span> whoami</p>
+          <p class="term-out">&gt; Kaustuv Baral — Digital Marketing Executive</p>
+          <p><span class="term-prompt">$</span> cat mission.log</p>
+          <p class="term-out">&gt; Convert. Optimize. Amplify. <span class="term-cursor">▮</span></p>
+        </div>
+      </div>
+
+      <h1 class="glitch" data-text="KAUSTUV BARAL">KAUSTUV BARAL</h1>
+      <h2 class="hero-title neon-flicker">DIGITAL MARKETING EXECUTIVE</h2>
+
+      <!-- Typewriter tagline pulled from the CV summary -->
+      <p class="hero-tagline" id="typewriter" aria-live="polite"></p>
+
+      <div class="hero-actions">
+        <!-- == PASTE REAL CV PDF PATH HERE (or drop the file at /assets/cv.pdf) == -->
+        <a class="btn btn-primary" href="assets/cv.pdf" download="Kaustuv_Baral_CV.pdf">▸ DOWNLOAD CV</a>
+        <a class="btn btn-ghost" href="https://tinyurl.com/PastWork7777" target="_blank" rel="noopener">
+          ◈ PAST WORKS
+        </a>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">[ scroll to initialize ]</div>
+    </section>
+
+    <!-- ============================================================
+         2. ABOUT / SUMMARY (pulled from CV)
+         ============================================================ -->
+    <section class="section" id="about">
+      <h2 class="section-title glitch" data-text="// ABOUT">// ABOUT</h2>
+      <div class="about-card">
+        <p class="about-text">
+          Experienced Digital Marketer proficient in data-driven campaign management, analytics, and report
+          generation. Skilled across diverse digital marketing channels, social media marketing, paid advertising,
+          and content strategy. Expertise in creating engaging, conversion-focused campaigns with a strong focus on
+          audience targeting and performance optimization. Passionate about continuous learning and developing
+          innovative marketing solutions.
+        </p>
+
+        <ul class="about-meta">
+          <li><span class="meta-key">LOCATION</span><span class="meta-val">Balaju, Kathmandu</span></li>
+          <li><span class="meta-key">PHONE</span><span class="meta-val"><a href="tel:+9779849142374">+977 9849142374</a></span></li>
+          <li><span class="meta-key">EMAIL</span><span class="meta-val"><a href="mailto:kaustuvbaral18@gmail.com">kaustuvbaral18@gmail.com</a></span></li>
+          <!-- == PASTE REAL LINKEDIN URL HERE == -->
+          <li><span class="meta-key">LINKEDIN</span><span class="meta-val"><a href="https://www.linkedin.com/in/kaustuv-baral-8925182b6/" target="_blank" rel="noopener">/in/kaustuv-baral</a></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. SKILLS — terminal list with hover glow bars
+         ============================================================ -->
+    <section class="section" id="skills">
+      <h2 class="section-title glitch" data-text="// SKILLS">// SKILLS</h2>
+      <div class="skill-grid">
+        <!-- Each skill = a "skill terminal" card. Edit the label / % freely. -->
+        <div class="skill-card" style="--lvl:92%">
+          <span class="skill-label" data-lvl="92%">Meta Business Suite</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:88%">
+          <span class="skill-label" data-lvl="88%">CapCut Pro</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:86%">
+          <span class="skill-label" data-lvl="86%">Canva Pro</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:80%">
+          <span class="skill-label" data-lvl="80%">Photoshop</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:85%">
+          <span class="skill-label" data-lvl="85%">AI Graphics &amp; Videos</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:90%">
+          <span class="skill-label" data-lvl="90%">Branding</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:95%">
+          <span class="skill-label" data-lvl="95%">Content Strategy</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:93%">
+          <span class="skill-label" data-lvl="93%">Paid Advertising</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:90%">
+          <span class="skill-label" data-lvl="90%">Email Marketing</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+        <div class="skill-card" style="--lvl:97%">
+          <span class="skill-label" data-lvl="97%">Two-Wheeler &amp; License</span>
+          <span class="skill-bar"><i></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. EXPERIENCE — interactive timeline (click to expand)
+         ============================================================ -->
+    <section class="section" id="experience">
+      <h2 class="section-title glitch" data-text="// EXPERIENCE">// EXPERIENCE</h2>
+
+      <div class="timeline">
+        <!-- EXPERIENCE 1 (most recent) -->
+        <article class="tl-item" data-open="false">
+          <div class="tl-node">
+            <span class="tl-dot"></span>
+            <div class="tl-head">
+              <h3 class="tl-role">Digital Marketing Executive</h3>
+              <p class="tl-company">Enlighten Infosys Pvt. Ltd. <span class="tl-loc">| Bagbazar, Kathmandu</span></p>
+              <p class="tl-date">March 2026 — Present</p>
+            </div>
+            <button class="tl-toggle" aria-expanded="false">+</button>
+          </div>
+          <div class="tl-body">
+            <ul>
+              <li>Content Creation: Content writing, graphic design, video editing, and AI-assisted video production for promotional and social media content</li>
+              <li>Strategy &amp; Growth: Developed and executed marketing strategies, including paid ad campaigns across social platforms</li>
+              <li>Community &amp; Retention: Managed email marketing campaigns and WhatsApp/Viber community engagement for customer outreach</li>
+              <li>Social Media Operations: Planned, scheduled, and managed social media posting calendars across multiple brand accounts</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- EXPERIENCE 2 -->
+        <article class="tl-item" data-open="false">
+          <div class="tl-node">
+            <span class="tl-dot"></span>
+            <div class="tl-head">
+              <h3 class="tl-role">Digital Marketer</h3>
+              <p class="tl-company">Classic Tech Internet <span class="tl-loc">| New Baneshwor</span></p>
+              <p class="tl-date">June 2025 — March 2026</p>
+            </div>
+            <button class="tl-toggle" aria-expanded="false">+</button>
+          </div>
+          <div class="tl-body">
+            <ul>
+              <li>Managed and executed digital marketing campaigns across multiple platforms</li>
+              <li>Created, optimized, and monitored content for social media to increase engagement and reach</li>
+              <li>Created engaging graphics and videos using AI tools, Canva, and CapCut Pro</li>
+              <li>Proficient in Meta Business Suite, ad campaigns, content scheduling, and performance insights</li>
+              <li>Actively involved in branding and promotional activities, including designing and coordinating materials</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- EXPERIENCE 3 -->
+        <article class="tl-item" data-open="false">
+          <div class="tl-node">
+            <span class="tl-dot"></span>
+            <div class="tl-head">
+              <h3 class="tl-role">Digital Marketing &amp; Documentation Officer</h3>
+              <p class="tl-company">Pacific Human Resources Pvt. Ltd. <span class="tl-loc">| Kathmandu</span></p>
+              <p class="tl-date">August 2024 — March 2025</p>
+            </div>
+            <button class="tl-toggle" aria-expanded="false">+</button>
+          </div>
+          <div class="tl-body">
+            <ul>
+              <li>Developed and launched online marketing campaigns to attract potential candidates and international clients</li>
+              <li>Managed social media sites (Facebook, LinkedIn, Instagram) to build engagement and brand recognition</li>
+              <li>Processed and handled documents pertaining to foreign employment, ensuring adherence to Nepalese labor laws and international standards</li>
+              <li>Coordinated with embassies and government officials for work permits, visas, and approvals</li>
+              <li>Maintained accurate records and streamlined documentation processes for greater efficiency</li>
+              <li>Handled Foreign Employment Information Management System (FEIMS) software for government approvals</li>
+              <li>Learned image editing, retouching, and graphic design</li>
+              <li>Developed skill in creating social media posts, banners, and marketing materials</li>
+              <li>Improved typing speed and accuracy for fast document generation and data entry</li>
+              <li>Mastered Microsoft Office Suite (Word, Excel, PowerPoint)</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. EDUCATION & CERTIFICATIONS
+         ============================================================ -->
+    <section class="section" id="education">
+      <h2 class="section-title glitch" data-text="// EDUCATION">// EDUCATION</h2>
+
+      <div class="edu-grid">
+        <div class="edu-card">
+          <span class="edu-badge">BACHELOR'S</span>
+          <h3>Information Technology (BIT)</h3>
+          <p>Kantipur City College, Kathmandu</p>
+          <p class="edu-date">January 2021 — September 2025</p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-badge">NEB +2</span>
+          <h3>Science</h3>
+          <p>Trinity International College, Kathmandu</p>
+          <p class="edu-date">July 2018 — August 2020</p>
+        </div>
+      </div>
+
+      <h3 class="sub-title glitch" data-text="// CERTIFICATIONS">// CERTIFICATIONS</h3>
+      <div class="cert-card">
+        <span class="cert-icon">⌁</span>
+        <div>
+          <h4>Computer Advanced Skills</h4>
+          <p>Lotus Computer Institute <span class="cert-date">| 2018</span></p>
+        </div>
+      </div>
+
+      <!-- References — toggle to reveal -->
+      <h3 class="sub-title glitch" data-text="// REFERENCES">// REFERENCES</h3>
+      <button class="btn btn-ghost ref-toggle" id="ref-toggle" aria-expanded="false">▸ TOGGLE REFERENCES</button>
+      <div class="ref-panel" id="ref-panel" hidden>
+        <div class="ref-card">
+          <h4>Rojit Bhattarai</h4>
+          <p>Classic Tech Pvt. Ltd. | HOD</p>
+          <p class="ref-phone"><a href="tel:9849200714">9849200714</a></p>
+        </div>
+        <div class="ref-card">
+          <h4>Inju Adhikari</h4>
+          <p>Pacific Human Resources | Office Secretary</p>
+          <p class="ref-phone"><a href="tel:9851245683">9851245683</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6+7. PAST WORKS LINK SECTION
+         ============================================================ -->
+    <section class="section" id="works">
+      <h2 class="section-title glitch" data-text="// PAST WORKS">// PAST WORKS</h2>
+      <p class="section-lead">A curated feed of campaigns, creatives, and content I've shipped.</p>
+      <!-- == PASTE YOUR REAL PORTFOLIO / PAST-WORKS URL HERE (swap tinyurl) == -->
+      <a class="btn btn-primary works-btn" href="https://tinyurl.com/PastWork7777" target="_blank" rel="noopener">
+        ◈ OPEN PAST WORKS ARCHIVE
+      </a>
+    </section>
+
+    <!-- ============================================================
+         8. PAGES I'VE MANAGED — clickable cards (swap URL + add logo)
+         ============================================================ -->
+    <section class="section" id="pages">
+      <h2 class="section-title glitch" data-text="// PAGES MANAGED">// PAGES MANAGED</h2>
+      <div class="pages-grid">
+        <!-- == PASTE REAL PAGE URL in the href + drop a logo PNG in assets/img/ named like the file below == -->
+        <a class="page-card" href="#" target="_blank" rel="noopener">
+          <img src="assets/img/placeholder-logo.svg" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
+          <span class="page-name">Brand Account 01</span>
+          <span class="page-type">Facebook / Instagram</span>
+          <span class="page-go">→</span>
+        </a>
+
+        <a class="page-card" href="#" target="_blank" rel="noopener">
+          <img src="assets/img/placeholder-logo.svg" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
+          <span class="page-name">Brand Account 02</span>
+          <span class="page-type">Facebook / Instagram</span>
+          <span class="page-go">→</span>
+        </a>
+
+        <a class="page-card" href="#" target="_blank" rel="noopener">
+          <img src="assets/img/placeholder-logo.svg" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
+          <span class="page-name">Brand Account 03</span>
+          <span class="page-type">Facebook / Instagram</span>
+          <span class="page-go">→</span>
+        </a>
+
+        <a class="page-card" href="#" target="_blank" rel="noopener">
+          <img src="assets/img/placeholder-logo.svg" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
+          <span class="page-name">Brand Account 04</span>
+          <span class="page-type">LinkedIn</span>
+          <span class="page-go">→</span>
+        </a>
+      </div>
+      <p class="section-note">// tip: add more cards by copying any <code>&lt;a class="page-card"&gt;</code> block above</p>
+    </section>
+
+    <!-- ============================================================
+         9. CONTACT FORM (static — Formspree / mailto fallback)
+         ============================================================ -->
+    <section class="section" id="contact">
+      <h2 class="section-title glitch" data-text="// CONTACT">// CONTACT</h2>
+      <p class="section-lead">Transmit a transmission. I reply fast on channels and email.</p>
+
+      <!-- == CONTACT FORM ENDPOINT ==
+           Option A (recommended): Formspree.
+             1) Create a free form at https://formspree.io (or https://formspree.io/f/<your-id>)
+             2) Open js/script.js and set FORM_ENDPOINT = "https://formspree.io/f/XXXXXXX"
+           Option B: mailto fallback — the JS opens the visitor's email app
+             with the message pre-filled (works with zero backend).
+      -->
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row">
+          <label class="field">
+            <span class="field-label">&gt; NAME</span>
+            <input type="text" name="name" placeholder="Neo Anderson" required />
+            <span class="field-err">⚠ name is required (min 2 chars)</span>
+          </label>
+          <label class="field">
+            <span class="field-label">&gt; EMAIL</span>
+            <input type="email" name="email" placeholder="you@netrunner.io" required />
+            <span class="field-err">⚠ enter a valid email</span>
+          </label>
+        </div>
+        <label class="field">
+          <span class="field-label">&gt; SUBJECT</span>
+          <input type="text" name="subject" placeholder="Project inquiry / collab" required />
+          <span class="field-err">⚠ subject is required</span>
+        </label>
+        <label class="field">
+          <span class="field-label">&gt; MESSAGE</span>
+          <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          <span class="field-err">⚠ message is required (min 10 chars)</span>
+        </label>
+
+        <button type="submit" class="btn btn-primary form-submit">
+          <span class="btn-label">▸ TRANSMIT</span>
+        </button>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       10. FOOTER — social / contact with neon hover
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer-social">
+      <!-- == PASTE REAL LINKEDIN URL == -->
+      <a class="soc" href="https://www.linkedin.com/in/kaustuv-baral-8925182b6/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a class="soc" href="mailto:kaustuvbaral18@gmail.com" aria-label="Email">@</a>
+      <a class="soc" href="tel:+9779849142374" aria-label="Phone">☎</a>
+    </div>
+    <p class="footer-text">
+      <span class="term-prompt">$</span> echo "© 2026 Kaustuv Baral — built in Night City"<br />
+      &gt; <span class="footer-glow">hack the planet. run the campaign.</span>
+    </p>
+  </footer>
+
+  <!-- ============================================================
+       SIGNATURE INTERACTIVE: TERMINAL CONSOLE
+       Type commands: help | whoami | skills | experience | contact
+       ============================================================ -->
+  <div class="console" id="console" aria-hidden="true">
+    <div class="console-head" id="console-head">
+      <span class="console-title">◤ NETRUNNER TERMINAL</span>
+      <button class="console-close" id="console-close" aria-label="Close console">✕</button>
+    </div>
+    <div class="console-body" id="console-body">
+      <p class="console-line">&gt; Welcome to Kaustuv's terminal. Type <span class="console-cmd">help</span> for commands.</p>
+    </div>
+    <div class="console-input-row">
+      <span class="term-prompt">$</span>
+      <input class="console-input" id="console-input" type="text" autocomplete="off" spellcheck="false" placeholder="type a command…" />
+    </div>
+  </div>
+  <button class="console-launch" id="console-launch" aria-label="Open terminal">▮_</button>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
