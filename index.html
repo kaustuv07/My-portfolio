@@ -6,10 +6,17 @@
   <meta name="description" content="Kaustuv Baral — Digital Marketing Executive. Data-driven campaigns, social media, paid ads, and content strategy." />
   <title>Kaustuv Baral // Digital Marketing Executive</title>
 
-  <!-- Fonts: Orbitron (headings/techno), Rajdhani (body), Share Tech Mono (terminal) -->
+  <!-- Fonts: Orbitron (headings/techno), Rajdhani (body), Share Tech Mono (terminal)
+       crossorigin enables CORS for the font CSS so it caches correctly across origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" crossorigin="anonymous" />
+  <!-- SRI note: Google Fonts serves dynamic CSS (unicode-range subsets vary by browser),
+       so SRI hashes are not provider-supported here. We compensate with crossorigin +
+       a strict CSP font-src restricted to fonts.gstatic.com (see deploy/_headers). -->
+
+  <!-- Referrer policy as a belt-and-suspenders fallback (headers also set it on a real host) -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
@@ -99,7 +106,7 @@
         <ul class="about-meta">
           <li><span class="meta-key">LOCATION</span><span class="meta-val">Balaju, Kathmandu</span></li>
           <li><span class="meta-key">PHONE</span><span class="meta-val"><a href="tel:+9779849142374">+977 9849142374</a></span></li>
-          <li><span class="meta-key">EMAIL</span><span class="meta-val"><a href="mailto:kaustuvbaral18@gmail.com">kaustuvbaral18@gmail.com</a></span></li>
+          <li><span class="meta-key">EMAIL</span><span class="meta-val"><a href="#contact">use contact form →</a></span></li>
           <!-- == PASTE REAL LINKEDIN URL HERE == -->
           <li><span class="meta-key">LINKEDIN</span><span class="meta-val"><a href="https://www.linkedin.com/in/kaustuv-baral-8925182b6/" target="_blank" rel="noopener">/in/kaustuv-baral</a></span></li>
         </ul>
@@ -303,14 +310,14 @@
         <!-- == PASTE REAL PAGE URL in the href. Logo goes in assets/img/<name>-logo.png ==
              If the logo file is missing, JS swaps in a styled initials badge as fallback. -->
         <a class="page-card" href="https://www.facebook.com/classictech" target="_blank" rel="noopener">
-          <img src="assets/img/classictech-logo.png" alt="ClassicTech Internet logo" class="page-logo" loading="lazy" data-initials="CT" onerror="window.logoFallback(this)" />
+          <img src="assets/img/classictech-logo.png" alt="ClassicTech Internet logo" class="page-logo" loading="lazy" data-initials="CT" />
           <span class="page-name">ClassicTech Internet</span>
           <span class="page-type">Facebook Page</span>
           <span class="page-go">→</span>
         </a>
 
         <a class="page-card" href="https://www.facebook.com/EnlightenEducation" target="_blank" rel="noopener">
-          <img src="assets/img/enlighten-logo.png" alt="Enlighten Education logo" class="page-logo" loading="lazy" data-initials="EE" onerror="window.logoFallback(this)" />
+          <img src="assets/img/enlighten-logo.png" alt="Enlighten Education logo" class="page-logo" loading="lazy" data-initials="EE" />
           <span class="page-name">Enlighten Education</span>
           <span class="page-type">Facebook Page</span>
           <span class="page-go">→</span>
@@ -325,12 +332,18 @@
       <h2 class="section-title glitch" data-text="// CONTACT">// CONTACT</h2>
       <p class="section-lead">Transmit a transmission. I reply fast on channels and email.</p>
 
-      <!-- == CONTACT FORM ENDPOINT ==
-           Option A (recommended): Formspree.
-             1) Create a free form at https://formspree.io (or https://formspree.io/f/<your-id>)
-             2) Open js/script.js and set FORM_ENDPOINT = "https://formspree.io/f/XXXXXXX"
-           Option B: mailto fallback — the JS opens the visitor's email app
-             with the message pre-filled (works with zero backend).
+      <!-- == CONTACT FORM (LIVE) ==
+           The form POSTs to the Formspree endpoint defined as
+           CONFIG.FORM_ENDPOINT in js/script.js (currently active).
+           - Anti-spam: hidden honeypot "_gotcha" field (Formspree drops it).
+           - Client-side validation in js/script.js; data is never reflected
+             back into the DOM, so there is no XSS surface here.
+           - A mailto fallback exists in script.js but is only used if
+             FORM_ENDPOINT is ever null. The email address is split/obfuscated
+             and never shown to visitors (anti-spam).
+           SECURITY NOTE: Formspree handles rate limiting + CSRF server-side.
+           If this is ever moved to a custom backend, add rate limiting and
+           CSRF tokens on the POST endpoint.
       -->
       <form class="contact-form" id="contact-form" novalidate>
         <div class="form-row">
@@ -356,6 +369,13 @@
           <span class="field-err">⚠ message is required (min 10 chars)</span>
         </label>
 
+        <!-- Honeypot anti-spam field (hidden from humans, invisible to browsers).
+             Formspree + script.js both treat a filled "_gotcha" as a bot and drop it. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp-website">Leave this field empty</label>
+          <input type="text" name="_gotcha" id="hp-website" tabindex="-1" autocomplete="off" />
+        </div>
+
         <button type="submit" class="btn btn-primary form-submit">
           <span class="btn-label">▸ TRANSMIT</span>
         </button>
@@ -373,7 +393,7 @@
     <div class="footer-social">
       <!-- == PASTE REAL LINKEDIN URL == -->
       <a class="soc" href="https://www.linkedin.com/in/kaustuv-baral-8925182b6/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-      <a class="soc" href="mailto:kaustuvbaral18@gmail.com" aria-label="Email">@</a>
+      <a class="soc" href="#contact" aria-label="Email (use contact form)">@</a>
       <a class="soc" href="tel:+9779849142374" aria-label="Phone">☎</a>
     </div>
     <p class="footer-text">

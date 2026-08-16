@@ -21,14 +21,16 @@ Drop brand logos in `assets/img/` (PNG/JPG/SVG). Then in `index.html`, for each
 
 ```html
 <a class="page-card" href="https://facebook.com/your-page" target="_blank" rel="noopener">
-  <img src="assets/img/your-logo.png" alt="" class="page-logo" loading="lazy" onerror="this.style.display='none'" />
+  <img src="assets/img/your-logo.png" alt="" class="page-logo" loading="lazy" data-initials="BR" />
   <span class="page-name">Your Brand Name</span>
   <span class="page-type">Facebook / Instagram</span>
   <span class="page-go">→</span>
 </a>
 ```
 
-If a logo is missing, the card still works — the image simply hides itself.
+If a logo is missing, `script.js` (`initLogoFallback`) swaps in a styled initials
+badge using the `data-initials` attribute. Do NOT add inline `onerror` handlers —
+the site's strict Content-Security-Policy (`script-src 'self'`) blocks them.
 
 ## 3. Current placeholders included
 - `placeholder-logo.svg` — neon placeholder shown in all 4 page cards until you

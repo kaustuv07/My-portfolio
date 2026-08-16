@@ -481,6 +481,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding: 2rem; box-shadow: inset 0 0 30px rgba(5, 217, 232, 0.05);
 }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+
+/* Honeypot anti-spam field — visually hidden, only bots "see" it */
+.hp-field {
+  position: absolute; left: -9999px; top: auto;
+  width: 1px; height: 1px; overflow: hidden;
+}
 .field { display: block; margin-bottom: 1.4rem; }
 .field-label {
   display: block; font-family: var(--font-mono); font-size: 0.75rem;

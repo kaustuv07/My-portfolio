@@ -16,14 +16,22 @@
      ---------------------------------------------------------- */
   const CONFIG = {
     // == CONTACT FORM ENDPOINT ==
-    // Option A (recommended): create a free form at https://formspree.io,
-    // then paste your form ID below, e.g. "https://formspree.io/f/abcxyz".
-    // Option B (fallback, no backend): set to null — the form will open the
-    // visitor's email app with the message pre-filled instead.
+    // ACTIVE: the form POSTs here via fetch (JSON). Formspree provides
+    // server-side rate limiting + CSRF protection + drops the "_gotcha"
+    // honeypot field. If you ever move to a custom backend, you must add
+    // rate limiting and CSRF protection on the POST endpoint yourself.
     FORM_ENDPOINT: 'https://formspree.io/f/xppalkqa',
 
     // == PASTE YOUR REAL PAST-WORKS URL HERE ==
     PAST_WORKS_URL: 'https://tinyurl.com/PastWork7777',
+
+    // == EMAIL (anti-spam) ==
+    // Split into local + domain so the full "x@y" address never appears as a
+    // literal in the source that naive mail-scraping bots regex-harvest.
+    // Used ONLY as a last-resort mailto fallback when FORM_ENDPOINT fails.
+    // The visible contact channel is the form — visitors never see this address.
+    EMAIL_LOCAL: 'kaustuvbaral18',
+    EMAIL_DOMAIN: 'gmail.com',
   };
 
   /* ----------------------------------------------------------
@@ -32,6 +40,12 @@
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Escape HTML special chars. Always pass user-supplied strings through this
+  // before inserting via innerHTML (XSS prevention).
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  }[c]));
 
   /* ----------------------------------------------------------
      3. TYPEWRITER (hero tagline from the CV summary)
@@ -259,8 +273,9 @@
 
     const run = (raw) => {
       const cmd = raw.trim().toLowerCase();
-      write('$ ' + raw);
-      const fn = commands[cmd] || (() => write('&gt; <span style="color:var(--magenta)">unknown command</span>: "' + cmd + '". Type <span class="console-cmd">help</span>.'));
+      // esc() the raw input — it's user-supplied and echoed into innerHTML
+      write('$ ' + esc(raw));
+      const fn = commands[cmd] || (() => write('&gt; <span style="color:var(--magenta)">unknown command</span>: "' + esc(cmd) + '". Type <span class="console-cmd">help</span>.'));
       fn();
     };
 
@@ -339,6 +354,13 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      // Honeypot anti-spam: bots fill the hidden "_gotcha" field (also handled
+      // server-side by Formspree). Silently accept so the bot thinks it worked.
+      if ($('input[name="_gotcha"]', form).value) {
+        form.reset();
+        return;
+      }
+
       if (!validate()) {
         setStatus('⚠ TRANSMISSION FAILED — check the highlighted fields.', 'err');
         return;
@@ -364,7 +386,7 @@
         btnLabel.textContent = '▸ TRANSMIT';
       };
       const fail = () => {
-        setStatus('⚠ UPLINK ERROR — please email me directly at kaustuvbaral18@gmail.com', 'err');
+        setStatus('⚠ UPLINK ERROR — transmission failed. Please try again.', 'err');
         btn.classList.remove('busy');
         btnLabel.textContent = '▸ TRANSMIT';
       };
@@ -385,21 +407,25 @@
       }
 
       // --- mailto fallback path (no backend needed) ---
+      // Address is assembled at runtime from split parts so the full
+      // "local@domain" string never appears in the source code.
+      const EMAIL = CONFIG.EMAIL_LOCAL + '@' + CONFIG.EMAIL_DOMAIN;
       const subject = encodeURIComponent(payload.subject);
       const body = encodeURIComponent(
         'Name: ' + payload.name + '\nEmail: ' + payload.email + '\n\n' + payload.message
       );
-      const mailto = 'mailto:kaustuvbaral18@gmail.com?subject=' + subject + '&body=' + body;
+      const mailto = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + body;
       window.location.href = mailto;
       success();
     });
   }
 
   /* ----------------------------------------------------------
-     11. PAGE LOGO FALLBACK — replaces a missing logo image
-         with a styled initials badge (called from onerror)
+     11. PAGE LOGO FALLBACK — replaces a missing logo image with
+         a styled initials badge. Bound in JS (not inline onerror)
+         so the strict CSP script-src 'self' can be enforced.
      ---------------------------------------------------------- */
-  window.logoFallback = function (img) {
+  const logoFallback = (img) => {
     if (img.dataset.fallbackApplied) return; // only swap once
     img.dataset.fallbackApplied = '1';
 
@@ -412,6 +438,14 @@
     img.replaceWith(badge);
   };
 
+  function initLogoFallback() {
+    $$('.page-logo').forEach((img) => {
+      img.addEventListener('error', () => logoFallback(img));
+      // image may have already failed before this script ran
+      if (img.complete && img.naturalWidth === 0) logoFallback(img);
+    });
+  }
+
   /* ----------------------------------------------------------
      BOOT
      ---------------------------------------------------------- */
@@ -422,6 +456,7 @@
     initTimeline();
     initReferences();
     initCursorTrail();
+    initLogoFallback();
     initConsole();
     initForm();
   });
